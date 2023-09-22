@@ -1,0 +1,679 @@
+{
+    "port": 15001,
+
+    "server_name": "Chatbot response quality - detailed",
+
+    "annotation_task_name": "Chatbot response quality - detailed",
+
+    # Potato will write the annotation file for all annotations to this
+    # directory, as well as per-annotator output files and state information
+    # necessary to restart annotation.
+    "output_annotation_dir": "annotation_output_main_3/",
+
+    # The output format for the all-annotator data. Allowed formats are:
+    # * jsonl
+    # * json (same output as jsonl)
+    # * csv
+    # * tsv
+    #
+    "output_annotation_format": "jsonl",
+
+    # If annotators are using a codebook, this will be linked at the top to the
+    # instance for easy access
+    "annotation_codebook_url": "",
+
+    "data_files": [
+       "data_files/prolific_main_batch_3.jsonl"
+    ],
+
+    "item_properties": {
+        "id_key": "id",
+        "text_key": "text",
+        "context_key": "context"
+    },
+
+
+    "user_config": {
+
+      "allow_all_users": True,
+      
+      # "users": [  ],
+    },
+
+
+    #defining the ways annotators entering the annotation system
+    "login": {
+       "type": 'url_direct',    #can be 'password' or 'url_direct'
+       "url_argument": 'PROLIFIC_PID', # when the login type is set to 'url_direct', 'url_argument' must be setup for a direct url argument login
+       "auth_token": "38a3722d9e258b7fabb590499348833a",
+    },
+
+    #the jumping-to-id function will be disabled if "jumping_to_id_disabled" is True
+      "jumping_to_id_disabled": True,
+
+    #the navigation bar will be hidden to the annotators if "hide_navbar" is True
+      "hide_navbar": True,
+
+    "automatic_assignment": {
+      #whether do automatic task assignment for annotators, default False.
+      "on": True,
+      "output_filename": 'task_assignment.json',
+      "sampling_strategy": 'random',
+      "labels_per_instance": 1,
+      "instance_per_annotator": 1,
+      "test_question_per_annotator": 0 # you must set up the test question in surveyflow to use this function
+
+    },
+
+    #list_as_text is used when the input text is actually a list of texts, usually used for best-worst-scaling or dialogue analysis
+    "list_as_text": {
+      "text_list_prefix_type": 'none', #whether automatically insert a prefix for each line, currently supporting 'number', 'alphabet', 'number'
+      "horizontal": True,
+    },
+
+    # How many seconds do you want the annotators spend on each instance, after
+    # that, an alert will be sent per alert_time_each_instance seconds.
+    "alert_time_each_instance": 10000000,
+
+    "annotation_schemes": [
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        # CRITERIA
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        {
+            "annotation_type": "pure_display",
+            "name": "Rating Critera",
+            "description": "Please rate the <strong>responses</strong> according to the criteria below. Try to judge each category independently of the others where possible.",
+        },
+        {
+          "annotation_type": "likert",
+          "name": "style_a",
+          "title": "Style - A",
+          "description": "How similar is the style of response A to what you expected?",
+          "min_label": "Unexpected",
+          "max_label": "As expected",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "style_b",
+          "title": "Style - B",
+          "description": "How similar is the style of response B to what you expected?",
+          "min_label": "Unexpected",
+          "max_label": "As expected",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+
+
+        {
+          "annotation_type": "likert",
+          "name": "confidence_a",
+          "title": "Confidence - A",
+          "description": "How confident and persuasive is response A?",
+          "min_label": "Uncertain",
+          "max_label": "Confident",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "confidence_b",
+          "title": "Confidence - B",
+          "description": "How confident and persuasive is response B?",
+          "min_label": "Uncertain",
+          "max_label": "Confident",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+
+        {
+          "annotation_type": "likert",
+          "name": "useful_a",
+          "title": "Usefulness - A",
+          "description": "How useful is response A?",
+          "min_label": "Useless",
+          "max_label": "Very Useful",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "useful_b",
+          "title": "Usefulness - B",
+          "description": "How useful is response B?",
+          "min_label": "Useless",
+          "max_label": "Very Useful",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+
+        {
+          "annotation_type": "likert",
+          "name": "detail_a",
+          "title": "Detail - A",
+          "description": "How complete, detailed and specific is response A?",
+          "min_label": "Basic",
+          "max_label": "Thorough",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "detail_b",
+          "title": "Detail - B",
+          "description": "How complete, detailed and specific is response B?",
+          "min_label": "Basic",
+          "max_label": "Thorough",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+
+        {
+          "annotation_type": "likert",
+          "name": "clarity_a",
+          "title": "Clarity - A",
+          "description": "How clear, concise and easy to read is response A, without including unnecessary information or being verbose?",
+          "min_label": "Unclear",
+          "max_label": "Very clear",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "clarity_b",
+          "title": "Clarity - B",
+          "description": "How clear, concise and easy to read is response B, without including unnecessary information or being verbose?",
+          "min_label": "Unclear",
+          "max_label": "Very clear",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+
+        {
+          "annotation_type": "likert",
+          "name": "creativity_a",
+          "title": "Creativity - A",
+          "description": "How novel or creative is response A, rather than just repeating the input or saying obvious things?",
+          "min_label": "Generic",
+          "max_label": "Creative",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "creativity_b",
+          "title": "Creativity - B",
+          "description": "How novel or creative is response B, rather than just repeating the input or saying obvious things?",
+          "min_label": "Generic",
+          "max_label": "Creative",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+
+        {
+          "annotation_type": "likert",
+          "name": "positive_val",
+          "title": "Attention",
+          "description": "Please select *5* for this option",
+          "min_label": "",
+          "max_label": "",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "negative_val",
+          "title": "Attention",
+          "description": "Please select *1* for this option",
+          "min_label": "",
+          "max_label": "",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        
+
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        # ERROR TYPES
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        
+        {
+          "annotation_type": "pure_display",
+          "name": "Errors",
+          "description": "Please check whether the <strong>responses</strong> contain the errors below. Try to judge each error independently of the others where possible.",
+        },
+
+        {
+          "annotation_type": "radio",
+          "name": "inconsistent_a", 
+          "title": "Inconsistency with request - A",
+          "description": "Does response A incorrectly represent or change information from the request?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "inconsistent_b", 
+          "title": "Inconsistency with request - B",
+          "description": "Does response B incorrectly represent or change information from the request?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+
+        {
+          "annotation_type": "radio",
+          "name": "contradiction_a", 
+          "title": "Contradicts itself - A",
+          "description": "Is response A inconsistent, or does it contradict itself?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "contradiction_b", 
+          "title": "Contradicts itself - B",
+          "description": "Is response B inconsistent, or does it contradict itself?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+
+
+        {
+          "annotation_type": "radio",
+          "name": "factuality_a", 
+          "title": "Factuality - A",
+          "description": "Is response A factually incorrect (regardless of what the request said)? Please use Wikipedia or Google to check whether any facts included in response A are inaccurate.",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "factuality_b", 
+          "title": "Factuality - B",
+          "description": "Is response B factually incorrect (regardless of what the request said)? Please use Wikipedia or Google to check whether any facts included in response B are inaccurate.",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+
+        {
+          "annotation_type": "radio",
+          "name": "relevance_a", 
+          "title": "Relevance - A",
+          "description": "Does response A go off topic or include information that is not relevant to the request?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "relevance_b", 
+          "title": "Relevance - B",
+          "description": "Does response B go off topic or include information that is not relevant to the request?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+
+        {
+          "annotation_type": "radio",
+          "name": "formatting_a", 
+          "title": "Formatting - A",
+          "description": "Does response A fail to conform to any formatting or length requirements from the prompt?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "formatting_b", 
+          "title": "Formatting - B",
+          "description": "Does response B fail to conform to any formatting or length requirements from the prompt?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "scope_a", 
+          "title": "Exceed limits - A",
+          "description": "Does response A exceed the limits of a chatbot? Does the reponse give opinions or otherwise act as if it’s a person, or offer to take actions that it cannot (eg make a call, access the internet)? If the request is something impossible, confusing or unsafe, response A should refuse to answer or request clarification.",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "scope_b", 
+          "title": "Exceed limits - B",
+          "description": "Does response B exceed the limits of a chatbot? Does the reponse give opinions or otherwise act as if it’s a person, or offer to take actions that it cannot (eg make a call, access the internet)? If the request is something impossible, confusing or unsafe, response B should refuse to answer or request clarification.",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "refusal_a", 
+          "title": "Refusal - A",
+          "description": "If the request is reasonable, does response A refuse to answer it (eg 'I'm sorry, I can't help you with that')? A poor quality attempt to answer a reasonable request is allowed. If the request is unsafe or impossible, refusal is then allowed.",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "refusal_b", 
+          "title": "Refusal - B",
+          "description": "If the request is reasonable, does response B refuse to answer it (eg 'I'm sorry, I can't help you with that')? A poor quality attempt to answer a reasonable request is allowed. If the request is unsafe or impossible, refusal is then allowed.",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "fluency_a", 
+          "title": "Fluency - A",
+          "description": "Is response A grammatically incorrect, or does it contain spelling mistakes?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "fluency_b", 
+          "title": "Fluency - B",
+          "description": "Is response B grammatically incorrect, or does it contain spelling mistakes?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "harmful_a", 
+          "title": "Harmful - A",
+          "description": "Is response A unsafe, harmful or likely to cause offence in some way?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "harmful_b", 
+          "title": "Harmful - B",
+          "description": "Is response B unsafe, harmful or likely to cause offence in some way?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "repetition_a", 
+          "title": "Repetition - A",
+          "description": "Does response A repeat itself? For example, if there is a list in response A, are any items repeated? Does response A reuse the same phrase again and again?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+        {
+          "annotation_type": "radio",
+          "name": "repetition_b", 
+          "title": "Repetition - B",
+          "description": "Does response B repeat itself? For example, if there is a list in response B, are any items repeated? Does response B reuse the same phrase again and again?",
+          "labels": [
+             "No", "Yes"
+          ],
+          "label_requirement": {
+            "required": true
+          },
+        },
+
+
+
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        # OVERALL
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        
+        {
+          "annotation_type": "pure_display",
+          "name": "Overall Quality",
+          "description": "",
+        },
+
+        {
+          "annotation_type": "likert",
+          "name": "overall_a",
+          "title": "Overall - A",
+          "description": "In your opinion, how good is response A?",
+          "min_label": "Very Bad",
+          "max_label": "Very Good",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+        {
+          "annotation_type": "likert",
+          "name": "overall_b",
+          "title": "Overall - B",
+          "description": "In your opinion, how good is response B?",
+          "min_label": "Very Bad",
+          "max_label": "Very Good",
+          "size": 5,
+          "sequential_key_binding": False,
+          "displaying_score": true,
+          "label_requirement": {
+            "required": true
+          }
+        },
+
+        {
+          "annotation_type": "text",
+          "textarea": {
+                "on": F,
+                "rows": 2,
+                "cols": 40
+          },
+          "name": "factors_a",
+          "title": "Other Factors - A",
+          "description": "Did you base your overall score for response A on any factors other than the ones listed above?",
+          # The min and max labels are text shown at each end of the scale
+
+          "label_requirement": {
+            "required": false
+          }
+        },
+
+        {
+          "annotation_type": "text",
+          "textarea": {
+                "on": True,
+                "rows": 2,
+                "cols": 40
+          },
+          "name": "factors_b",
+          "title": "Other Factors - B",
+          "description": "Did you base your overall score for response B on any factors other than the ones listed above?",
+          # The min and max labels are text shown at each end of the scale
+
+          "label_requirement": {
+            "required": false
+          }
+        },
+        {
+          "annotation_type": "text",
+          "textarea": {
+                "on": True,
+                "rows": 2,
+                "cols": 40
+          },
+          "name": "feedback",
+          "title": "Feedback",
+          "description": "If you have any feedback or comments, please add them here",
+          # The min and max labels are text shown at each end of the scale
+
+          "label_requirement": {
+            "required": false
+          }
+        }
+    ],
+
+    # The html that changes the visualiztation for your task. Change this file
+    # to influence the layout and description of your task. This is not a full
+    # HTML page, just the piece that does lays out your task's pieces
+    # you may use templates in our lib, if you want to use your own template,
+    # please replace the string as a path to the template
+    "html_layout": "templates/layout.htm",
+    "surveyflow_html_layout": "templates/surveryflow_layout.htm",
+
+    # The core UI files for Potato. You should not need to change these normally.
+    #
+    # Exceptions to this might include:
+    # 1) You want to add custom CSS/fonts to style your task
+    # 2) Your layout requires additional JS/assets to render
+    # 3) You want to support additional keybinding magic
+    #
+    # if you want to use your own template,
+    # please replace the string as a path to the template
+    "base_html_template": "default",
+    "header_file": "templates/header.htm",
+
+    # This is where the actual HTML files will be generated
+    "site_dir": "site_dir",
+    "surveyflow": {
+          "on": true,
+          "order": [
+              # "pre_annotation",
+              "post_annotation"
+          ],
+          "pre_annotation": [
+              "surveyflow/consent.jsonl",
+          ],
+          "post_annotation": [
+              "surveyflow/end.jsonl",
+          ],
+          "testing": [
+          ]
+  }
+
+
+}

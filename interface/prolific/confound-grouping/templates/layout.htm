@@ -1,0 +1,37 @@
+<div class="alert alert-warning" role="alert">
+  <p>You will be shown a <strong>prompt</strong> sent to a chatbot, and two possible <strong>responses</strong>.</p>
+  <p>Your job is to evaluate each <strong>response</strong> according to 2 different criteria.</p>
+
+    <p>Please read the prompt in full, then read both responses before assessing them. The prompt should usually make it clear what the chatbot should do, such as answering a question or summarising a conversation. In some cases the prompt may end with a heading like "Summary:" or "Description:" -  in this case the response should "fill in the blank" and write out a summary or description of the rest of the prompt. </p>
+  </div>
+  <div class="alert alert-success" role="alert">
+    <p>The criteria that the responses should be checked for are:</p>
+    <ul>
+      <li><strong>Complexity</strong> - How complex are the words and language used in the response? </li>
+    <li><strong>Persuasiveness</strong>- How assertive and persuasive is the response?</li>
+    
+  </ul>
+    <p>Where possible, please check each criteria separately from each other.</p>
+  </div>
+
+  <div class="alert alert-info" role="alert">
+    First, carefully read through the prompt, checking that you understand how you expect the chatbot to respond. Then carefully read each response.
+  </div>
+
+
+<div class="row" style="background-color: white;">
+    
+    {{instance | safe}}
+    
+</div>
+<br style="height: 25px;" />
+
+<div class="alert alert-info" role="alert">
+    Now, please assess each response based on the criteria below. Remember that you are being asked to categorise the <strong>responses</strong>, not the prompt. It's OK to go back and re-read the prompt and responses if you need to. Required fields are marked with an asterisk.
+  </div>
+
+<div class="row">
+    
+    {{annotation_schematic}}
+    
+</div>
