@@ -1,0 +1,10 @@
+py-readability-metrics
+tqdm
+matplotlib
+cohere==4.20.0
+nltk
+transformers
+pandas
+jsonlines
+krippendorff
+irrCAC
