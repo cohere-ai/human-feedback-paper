@@ -1,5 +1,7 @@
 # Granular Evaluation of Model Outputs
 
+Tom Hosking, Phil Blunsom, Max Bartolo
+
 ## Description
 
 Human feedback has become the de facto standard for evaluating the performance of Large Language Models, and is increasingly being used as a training objective. However, it is not clear which properties of a generated output this single `preference' score does and does not capture, and we hypothesise that these scores are subjective and open to undesirable biases. We critically analyse the use of human feedback for both training and evaluation, to verify whether it fully captures a range of crucial error criteria. We find that while preference scores have fairly good coverage, they under-represent important aspects like factuality. We further hypothesise that both preference scores and error annotation may be affected by confounders, and leverage instruction-tuned models to generate outputs that vary along two possible confounding dimensions: assertiveness and complexity. We find that the assertiveness of an output skews the perceived rate of factuality errors, indicating that human annotations are not a fully reliable evaluation metric or training objective. Finally, we offer some preliminary evidence that using human feedback as a training objective disproportionately increases the assertiveness of model outputs. We encourage future work to carefully consider whether preference scores are well aligned with the true desired objective.
@@ -61,10 +63,6 @@ Part 2:
 `granular-eval-detailed-verification` for expert annotations
 
 Start Potato with a command like `python potato/potato/flask_server.py start confound-grouping/confound-grouping.yaml -p 15000`
-
-## Authors
-
-- Anonymised for submission
 
 ## License
 
