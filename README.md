@@ -1,4 +1,4 @@
-# Granular Evaluation of Model Outputs
+# Human Feedback is not Gold Standard
 
 Tom Hosking, Phil Blunsom, Max Bartolo
 
@@ -63,10 +63,6 @@ Part 2:
 `granular-eval-detailed-verification` for expert annotations
 
 Start Potato with a command like `python potato/potato/flask_server.py start confound-grouping/confound-grouping.yaml -p 15000`
-
-## License
-
-TBC
 
 ## Citation
 
