@@ -1,4 +1,4 @@
-# Human Feedback is not Gold Standard
+# [Human Feedback is not Gold Standard](https://arxiv.org/abs/2309.16349)
 
 Tom Hosking, Phil Blunsom, Max Bartolo
 
@@ -66,4 +66,13 @@ Start Potato with a command like `python potato/potato/flask_server.py start con
 
 ## Citation
 
-TBC
+```
+@misc{hosking2023human,
+      title={Human Feedback is not Gold Standard}, 
+      author={Tom Hosking and Phil Blunsom and Max Bartolo},
+      year={2023},
+      eprint={2309.16349},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
