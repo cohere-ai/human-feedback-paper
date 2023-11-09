@@ -8,3 +8,6 @@ pandas
 jsonlines
 krippendorff
 irrCAC
+pyarrow
+scikit-learn
+torch
