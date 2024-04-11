@@ -67,12 +67,12 @@ Start Potato with a command like `python potato/potato/flask_server.py start con
 ## Citation
 
 ```
-@misc{hosking2023human,
-      title={Human Feedback is not Gold Standard}, 
+@inproceedings{
+      hosking2024human,
+      title={Human Feedback is not Gold Standard},
       author={Tom Hosking and Phil Blunsom and Max Bartolo},
-      year={2023},
-      eprint={2309.16349},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+      booktitle={The Twelfth International Conference on Learning Representations},
+      year={2024},
+      url={https://openreview.net/forum?id=7W3GLNImfS}
 }
 ```
